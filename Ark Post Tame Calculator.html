@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--Written by Joey Tabish 2018-->
+<html>
+    <head>
+		<title>ARK Post-Tame Calculator</title>
+        <link rel ="stylesheet" type = "text/css" href = "css/main.css">
+        <style type css/text>
+         @font-face {
+         font-family:"ARK";
+         src: url("./fonts/DJB About a Boy.ttf");
+        }
+        @font-face{
+            font-family:"Death Rattle";
+                src: url("./fonts/deathrattlebbreg.otf");
+            }
+        body   {font-family: "ARK";          font-size:32px}
+        input  {font-family: "ARK";          font-size:32px}
+        select {font-family: "ARK";          font-size:32px}
+        option {font-family: "ARK";          font-size:32px}
+       #heading{font-family: "Death Rattle"; font-size:41px}
+       #pTR    {font-family: "Death Rattle"; font-size:32px}
+        
+        </style>
+    </head>
+	<body onload="reset();">
+        <div id="container">
+            <form id="pTF">
+    		<table>
+    		    <tr>
+                <div id="heading">POST TAME STAT CALCULATOR</div>
+                </tr>
+                <tr>
+                   <td>Creature:</td><td> 
+                    <select style="width:190px;" iD="TBHM"><!--as of v265.0-->
+                     <option value="0.9">Brontosaurus<option iD= Ta value="0.5" hidden></option>
+                     <option value="0.9">Carbonemys<option iD= Ta value="0.5"hidden></option>
+                     <option value="0.9">Doedicurus<option iD= Ta value="0.5" hidden></option>
+                     <option value="0.85">Quetzalcoatlus<option iD= Ta value="0.5" hidden></option>
+                     <option value="1">Gigantosaurus<option iD= Ta value="-63000" hidden></option>
+                     <option value="1">Griffin<option iD= Ta value="-1000" hidden></option>
+                     <option value="1">Any Other Creature<option iD= Ta value="0.5" hidden></option>
+                    </select>        </td>
+    		    </tr>
+    		    <tr>
+    		        <td>Effectiveness:</td><td><input style="width: 90px;" iD="TE"  value="100"/>
+                    <input id="pTR"style="position:relative;left:130px;" value="Post Tame Results:"/>
+                    </td>
+    		    </tr>
+    		    <tr>
+    		        <td>Level:</td><td><input style="width:90px;" iD="Vw"  value="50"/>
+                     <input style="position:relative;left:130px;" iD="VwP" value=""/>
+                    </td>
+    		    </tr>
+    		    <tr>
+    		        <td>Health:</td><td><input style="width:90px;" iD="VwH"  
+                       value="50"/> <input style="position:relative;left:130px;width:100px;" iD="VwHP" value="" /></td> 
+    		    </tr>
+    		    <tr>
+    		        <td>Stamina:</td><td><input style="width:90px;" iD="VwS" 
+                       value="50"/> <input style="position:relative;left:130px;width:120px;" iD="VwSP" value=""/></td>
+    		    </tr>
+    		    <tr>
+    		        <td>Oxygen:</td><td><input style="width:90px;" iD="VwO"  
+                    value="50"/> <input style="position:relative;left:130px;width:120px;" iD="VwOP" value=""/></td>
+    		    </tr>
+    		    <tr>
+    		        <td>Food:</td><td><input style="width:90px;" iD="VwF"  
+                    value="50"/> <input style="position:relative;left:130px;width:120px;" iD="VwFP" value=""/></td>
+    		    </tr>
+    		    <tr>
+    		        <td>Weight:</td><td><input style="width:90px;" iD="VwW"  
+                    value="50"/> <input style="position:relative;left:130px;width:120px;" iD="VwWP" value=""/></td>
+    		    </tr>
+    		    <tr>
+    		        <td>Mele Damage:</td><td><input style="width:90px;" iD="VwMD" 
+                   value="50"/> <input style="position:relative;left:130px;width:120px;" iD="VwMDP" value=""/></td>
+    		                                                                            
+    		    </tr>
+    		</table>
+            <input style="width:355px;" type="button" value="Calculate Post-Tame Stats" onClick="postTameLevel(); postTameHealth();postTameStamina();postTameOxygen();postTameFood();postTameWeight();postTameMeleDamage();"/>
+            <input style="position:relative;left:335px;width:75px;" type="button" value="Reset" onClick="reset()"/>
+                            
+        </form>    
+        </div>
+    		
+    		
+<!-------------JavaScript-----------------------------------------------------------------------------------------------------
+
+===L E G E N D===
+
+Vpt(*): Value Post Tame 
+Vw(*):  Value Wild
+*Designation respective to the first letter of each stat.*
+TBHM: Tame Base Health Multiplier
+Ta:   Timing Additive Bonus
+TaM:  Timing Additive Bonus Multiplier
+TE:   Taming Effectiveness
+Tm:   Taming Multiplicative Bonus
+TmM:  Taming Multiplicative Bonus Modifier
+
+-->
+<script>
+    function resetPTValues(){
+        document.getElementById("VwP").value="";
+        document.getElementById("VwHP").value=""; 
+        document.getElementById("VwSP").value="";
+        document.getElementById("VwOP").value="";
+        document.getElementById("VwFP").value="";
+        document.getElementById("VwWP").value="";
+        document.getElementById("VwMDP").value="";
+    }
+    function postTameLevel(){
+        var Vw   = document.getElementById("Vw").value;
+        var TE   = document.getElementById("TE").value;
+        var pFVw    = parseFloat(Vw);
+        var VwP  = 1+Vw/2*TE*0.01+pFVw;
+                           
+        document.getElementById("VwP").value=VwP;
+    }
+    function postTameHealth(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = document.getElementById("Ta").value;
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwH").value;
+        var Tm   = 1;    //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptH = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+    	    
+           document.getElementById("VwHP").value=VptH; 
+        }
+    function postTameStamina(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = 1
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwS").value;
+        var Tm   = 1;    //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptS = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+
+        document.getElementById("VwSP").value=VptS;
+    }
+    function postTameOxygen(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = 1
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwO").value;
+        var Tm   = 1;    //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptO = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+
+        document.getElementById("VwOP").value=VptO; 
+    }
+    function postTameFood(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = 1
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwF").value;
+        var Tm   = 1;    //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptF = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+
+        document.getElementById("VwFP").value=VptF; 
+    }
+    function postTameWeight(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = 1
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwW").value;
+        var Tm   = 1;    //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptW = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+
+        document.getElementById("VwWP").value=VptW; 
+    }
+    function postTameMeleDamage(){
+        var TmM  = 0.44; //As of v265.0
+        var TaM  = 0.14; //As of v265.0
+        var TBHM = document.getElementById("TBHM").value;
+        var Ta   = 0.5;  //As of v265.0
+        var TE   = document.getElementById("TE").value;
+        var Vw   = document.getElementById("VwMD").value;
+        var Tm   = 0.4;  //As of v265.0
+        //Grail of ARK post-tame calculations.
+        var VptMD = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
+
+        document.getElementById("VwMDP").value=VptMD; 
+    }
+    function reset(){
+        document.getElementById("pTF").reset();
+    }
+</script>
+
+    	</body>
+
+<footer>Version 1.1.2 © Joey Tabish 2018</footer>
+</html>

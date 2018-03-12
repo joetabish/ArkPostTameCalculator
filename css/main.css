@@ -1,0 +1,42 @@
+body {
+    background-image:url("../images/background.png");
+    background-repeat: no-repeat;
+}
+#container{
+    background:url("../images/dossier_template_gimp.png");
+    background-size: 100% 100%;
+    position:absolute;
+    width: 980px;
+    height: 560px;
+    top: 50%;
+    margin-top:-280px;
+    left:50%;
+    margin-left:-490px;
+}
+#pTF{
+    position:relative;
+    top:37px;
+    left:90px;
+    filter:drop-shadow(2px 2px 5px black);
+}
+select{
+    background:transparent;
+    border:none;
+}
+
+input{
+    background:transparent;
+    border:none;
+}
+option{
+    
+}
+footer{
+    color:white;
+    text-align:center;
+    position:absolute;
+    bottom: 10px;
+    width: 100%;
+    font-size:24px;
+    filter:drop-shadow(6px 6px 10px black);
+}
