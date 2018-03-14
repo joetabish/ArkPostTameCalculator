@@ -1,11 +1,11 @@
 body {
-    background-image:url("../images/background.png");
+    background-image:url("../images/background.jpeg");
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-position:center; 
 }
 #container{
-    background:url("../images/dossier_template_gimp.png");
+    background:url("../images/dossier_template_gimp.gif");
     background-size: 100% 100%;
     position:absolute;
     width: 980px;
@@ -30,8 +30,10 @@ input{
     background:transparent;
     border:none;
 }
-option{
-    
+select{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
 }
 footer{
     color:white;
