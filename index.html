@@ -115,7 +115,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         var pFVw    = parseFloat(Vw);
         var VwP  = 1+Vw/2*TE*0.01+pFVw;
                            
-        document.getElementById("VwP").value=VwP;
+        document.getElementById("VwP").value=Math.floor(VwP);
     }
     function postTameHealth(){
         var TmM  = 0.44; //As of v265.0
@@ -128,7 +128,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptH = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
     	    
-           document.getElementById("VwHP").value=VptH; 
+           document.getElementById("VwHP").value=Math.floor(VptH); 
         }
     function postTameStamina(){
         var TmM  = 0.44; //As of v265.0
@@ -141,7 +141,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptS = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
 
-        document.getElementById("VwSP").value=VptS;
+        document.getElementById("VwSP").value=Math.floor(VptS);
     }
     function postTameOxygen(){
         var TmM  = 0.44; //As of v265.0
@@ -154,7 +154,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptO = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
 
-        document.getElementById("VwOP").value=VptO; 
+        document.getElementById("VwOP").value=Math.floor(VptO); 
     }
     function postTameFood(){
         var TmM  = 0.44; //As of v265.0
@@ -167,7 +167,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptF = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
 
-        document.getElementById("VwFP").value=VptF; 
+        document.getElementById("VwFP").value=Math.floor(VptF); 
     }
     function postTameWeight(){
         var TmM  = 0.44; //As of v265.0
@@ -180,7 +180,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptW = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
 
-        document.getElementById("VwWP").value=VptW; 
+        document.getElementById("VwWP").value=Math.floor(VptW); 
     }
     function postTameMeleDamage(){
         var TmM  = 0.44; //As of v265.0
@@ -193,7 +193,7 @@ TmM:  Taming Multiplicative Bonus Modifier
         //Grail of ARK post-tame calculations.
         var VptMD = (Vw*TBHM+Ta*TaM)*(1+TE*Tm*TmM);
 
-        document.getElementById("VwMDP").value=VptMD; 
+        document.getElementById("VwMDP").value=Math.floor(VptMD); 
     }
     function reset(){
         document.getElementById("pTF").reset();
@@ -202,5 +202,5 @@ TmM:  Taming Multiplicative Bonus Modifier
 
     	</body>
 
-<footer>Version 1.1.2 © Joey Tabish 2018</footer>
+<footer>Version 1.2.0 © Joey Tabish 2018</footer>
 </html>
